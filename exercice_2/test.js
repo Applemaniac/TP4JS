@@ -151,6 +151,7 @@ QUnit.test('TicTacToe win diag', function(assert) {
 
 QUnit.test('TicTacToe mate', function(assert) {
 	let game = new TicTacToe();
+	console.log(game);
 	assert.ok(!game.isFinished());
 	game.play(1,1);
 	game.play(0,0);
