@@ -19,43 +19,43 @@ QUnit.test('TicTacToe constructor', function(assert) {
     
     assert.ok(Object.keys(observable).every(key => game[key]));
 
-	assert.equal(game.currentPlayer, 0);
-	assert.ok(Array.isArray(game.grid));
-	assert.equal(game.grid.length, 3);
+	assert.equal(game._currentPlayer, 0);
+	assert.ok(Array.isArray(game._grid));
+	assert.equal(game._grid.length, 3);
 	for(let line = 0; line < 3; ++line) {
-		assert.ok(Array.isArray(game.grid[line]));
-		assert.equal(game.grid[line].length, 3);
+		assert.ok(Array.isArray(game._grid[line]));
+		assert.equal(game._grid[line].length, 3);
 	}
 });
 
 QUnit.test('TicTacToe play - player id', function(assert) {
 	let game = new TicTacToe();
 
-	assert.equal(0, game.currentPlayer);
+	assert.equal(0, game._currentPlayer);
 	game.play(0,0);
-	assert.equal(1, game.currentPlayer);
+	assert.equal(1, game._currentPlayer);
 	game.play(0,1);
-	assert.equal(0, game.currentPlayer);
+	assert.equal(0, game._currentPlayer);
 	game.play(0,2);
-	assert.equal(1, game.currentPlayer);
+	assert.equal(1, game._currentPlayer);
 });
 
 QUnit.test('TicTacToe play - grid state', function(assert) {
 	let game = new TicTacToe();
 
 	game.play(0,0);
-	assert.equal(0, game.grid[0][0]);
+	assert.equal(0, game._grid[0][0]);
 	game.play(0,1);
-	assert.equal(1, game.grid[0][1]);
+	assert.equal(1, game._grid[0][1]);
 	game.play(0,2);
-	assert.equal(0, game.grid[0][2]);
+	assert.equal(0, game._grid[0][2]);
 	game.play(1,1);
-	assert.equal(1, game.grid[1][1]);
-	assert.equal(undefined, game.grid[1][0]);
-	assert.equal(undefined, game.grid[1][2]);
-	assert.equal(undefined, game.grid[2][0]);
-	assert.equal(undefined, game.grid[2][1]);
-	assert.equal(undefined, game.grid[2][2]);
+	assert.equal(1, game._grid[1][1]);
+	assert.equal(undefined, game._grid[1][0]);
+	assert.equal(undefined, game._grid[1][2]);
+	assert.equal(undefined, game._grid[2][0]);
+	assert.equal(undefined, game._grid[2][1]);
+	assert.equal(undefined, game._grid[2][2]);
 });
 
 QUnit.test('TicTacToe getCurrentPlayer', function(assert) {

@@ -1,46 +1,48 @@
 class TicTacToe extends Observable{
 
-    currentPlayer;
-    grid;
-    finish;
-    winner;
+    _currentPlayer;
+    _grid;
+    _finish;
+    _winner;
+    _event;
 
     constructor() {
         super();
-        this.currentPlayer = 0;
-        this.grid = [[undefined, undefined, undefined],
+        this._currentPlayer = 0;
+        this._grid = [[undefined, undefined, undefined],
                      [undefined, undefined, undefined],
                      [undefined, undefined, undefined]];
-        this.finish = false;
-        this.winner = undefined;
+        this._finish = false;
+        this._winner = undefined;
+        this._event = new Observable();
     }
 
     play(x, y){
-        this.grid[x][y] = this.currentPlayer;
-        this.currentPlayer = this.currentPlayer === 0 ? 1 : 0;
+        this._grid[x][y] = this._currentPlayer;
+        this._currentPlayer = this._currentPlayer === 0 ? 1 : 0;
         this.hasWinner();
     }
 
     reset(){
-        for (let i = 0; i < this.grid.length; i++) {
-            for (let q = 0; q < this.grid.length; q++) {
-                this.grid[i][q] = undefined;
+        for (let i = 0; i < this._grid.length; i++) {
+            for (let q = 0; q < this._grid.length; q++) {
+                this._grid[i][q] = undefined;
             }
         }
-        this.currentPlayer = 0;
-        this.finish = false;
+        this._currentPlayer = 0;
+        this._finish = false;
     }
 
     getCurrentPlayer(){
-        return this.currentPlayer;
+        return this._currentPlayer;
     }
 
     getCaseState(x, y){
-        return this.grid[x][y];
+        return this._grid[x][y];
     }
 
     isFinished(){
-        return this.finish;
+        return this._finish;
     }
 
     hasWinner(){
@@ -57,26 +59,26 @@ class TicTacToe extends Observable{
 
         for (let i = 0; i < test.length; i++){
             // Ok, cette ligne condition est horrible mais elle donne les diffrentes configurations contenues dans test.
-            if ((this.grid[test[i][0][0]][test[i][0][1]] === this.grid[test[i][1][0]][test[i][1][1]]) && (this.grid[test[i][1][0]][test[i][1][1]] === this.grid[test[i][2][0]][test[i][2][1]]) && (this.grid[test[i][0][0]][test[i][0][1]] !== undefined)){
-                this.winner = this.grid[test[i][0][0]][test[i][0][1]];
-                this.finish = true;
+            if ((this._grid[test[i][0][0]][test[i][0][1]] === this._grid[test[i][1][0]][test[i][1][1]]) && (this._grid[test[i][1][0]][test[i][1][1]] === this._grid[test[i][2][0]][test[i][2][1]]) && (this._grid[test[i][0][0]][test[i][0][1]] !== undefined)){
+                this._winner = this._grid[test[i][0][0]][test[i][0][1]];
+                this._finish = true;
                 retour = true;
             }
         }
 
         if (!retour){ // S'il n'y a pas de victoire, on test l'égalité !
             let isMate = true;
-            for (let i = 0; i < this.grid.length; i++) {
-                for (let q = 0; q < this.grid.length; q++) {
-                    if (this.grid[i][q] === undefined){
+            for (let i = 0; i < this._grid.length; i++) {
+                for (let q = 0; q < this._grid.length; q++) {
+                    if (this._grid[i][q] === undefined){
                         isMate = false;
                     }
                 }
             }
 
             if (isMate){
-                this.winner = undefined;
-                this.finish = true;
+                this._winner = undefined;
+                this._finish = true;
                 retour = false;
             }
         }
@@ -85,9 +87,7 @@ class TicTacToe extends Observable{
     }
 
     getWinner(){
-        return this.winner;
+        return this._winner;
     }
-
-
 
 }
