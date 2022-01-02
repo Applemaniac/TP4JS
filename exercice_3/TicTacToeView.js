@@ -46,7 +46,16 @@ class TicTacToeView{
                 let value = x * 3 + y + 1;
                 let elem;
                 document.querySelectorAll("td").forEach(e => e.getAttribute("data") === value.toString() ? elem = e : '');
-                elem.textContent = this._game.getCaseState(x, y) === undefined ? '' : this._game.getCaseState(x, y);
+                if (this._game.getCaseState(x, y) !== undefined){
+                    if (this._game.getCaseState(x, y) == 0){
+                        elem.textContent = "X";
+                    }else{
+                        elem.textContent = "O";
+                    }
+                }else{
+                    elem.textContent = "";
+
+                }
             }
         }
     }
