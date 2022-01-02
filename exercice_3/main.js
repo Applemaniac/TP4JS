@@ -1,5 +1,6 @@
+// Cyril Cuvelier - Simon Losson 2022 CIR2
 (function() {
 	let game = new TicTacToe();
-    let view = new TicTacToeView(game, 'morpion1');
+    new TicTacToeView(game, 'Morpion');
 })();
 

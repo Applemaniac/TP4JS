@@ -1,3 +1,11 @@
+/* Écrire autant de chose pour que ça soit aussi moche...
+TO DO apprendre le SCSS
+ */
+h1 {
+    text-align: center;
+    padding-bottom: 10%;
+}
+
 table {
     border-collapse: collapse;
 }
@@ -7,6 +15,7 @@ td {
     height: 100px;
     text-align: center;
 }
+
 table {
     margin: 5px auto;
 }
@@ -17,4 +26,18 @@ table {
 .hori {
     border-top: 2px solid black;
     border-bottom: 2px solid black;
+}
+
+div {
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+footer{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    padding-top:50px;
+    height:50px;
+    text-align: center;
 }

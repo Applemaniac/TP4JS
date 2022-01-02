@@ -1,3 +1,5 @@
+// Divers tests !
+
 (function() {
 
 	let observableObject = new Observable();

@@ -1,3 +1,4 @@
+// Test unitaire
 QUnit.test('TicTacToe prototype - method existance', function(assert) {
   assert.equal(typeof TicTacToe.prototype.play, 'function');
   assert.equal(typeof TicTacToe.prototype.reset, 'function');
